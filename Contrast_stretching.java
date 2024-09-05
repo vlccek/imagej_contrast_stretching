@@ -263,9 +263,9 @@ public class Contrast_stretching extends PlugInFrame implements ActionListener
             @Override
             public double apply(double value)
             {
-                value = value / lamdaMax;
+                value = value/lamdaMax ;
                 if (value == 0) value = 0.1;
-                return Math.PI * value;
+                return value*7.5;
             }
         }), new generalMethodHolder(SIGMOID_TAN, new transformationFunction()
         {
@@ -394,7 +394,7 @@ public class Contrast_stretching extends PlugInFrame implements ActionListener
 
         sliderPanel.add(slider);
         // text field to showing the number of control points
-        final JTextField textField = new JTextField(String.valueOf(initialValue), 5);
+        final JTextField textField = new JTextField(String.valueOf(initialValue), 3);
         textField.setHorizontalAlignment(JTextField.CENTER);
         sliderPanel.add(textField);
 
@@ -470,7 +470,7 @@ public class Contrast_stretching extends PlugInFrame implements ActionListener
             public void itemStateChanged(ItemEvent e)
             {
                 repaintGraph();
-                System.out.println("Method: " + chTransferenceMethods.getSelectedItem());
+                // System.out.println("Method: " + chTransferenceMethods.getSelectedItem());
             }
         });
 
@@ -562,7 +562,7 @@ public class Contrast_stretching extends PlugInFrame implements ActionListener
 class CSPlot extends Canvas implements MouseMotionListener, MouseListener
 {
     private static final int WIDTH = 255, HEIGHT = 255;
-    private int nControlPoints = 5;
+    private int nControlPoints = 3;
 
     // size of dots (points in graph)
     private final int sizeOfPoint = 25;
@@ -630,7 +630,7 @@ class CSPlot extends Canvas implements MouseMotionListener, MouseListener
             }
             displayedFunction[i] = tmp;
 
-            System.out.println("New value with index: " + i + " value: " + tmp);
+            // System.out.println("New value with index: " + i + " value: " + tmp);
         }
         computeControlPoints();
         repaint();
@@ -685,7 +685,7 @@ class CSPlot extends Canvas implements MouseMotionListener, MouseListener
         {
             x_points[index] = (int) i;
             y_points[index] = displayedFunction[(int) i];
-            System.out.println("Index: " + index + " i: " + i + "value: " + displayedFunction[(int) i]);
+            // System.out.println("Index: " + index + " i: " + i + "value: " + displayedFunction[(int) i]);
 
 
             ellipses[index] = new Ellipse2D.Double(x_points[index] - ((double) sizeOfPoint / 2), 255 - y_points[index] - ((double) sizeOfPoint / 2), sizeOfPoint, sizeOfPoint);
@@ -745,7 +745,7 @@ class CSPlot extends Canvas implements MouseMotionListener, MouseListener
             for (int i = 0; i < 256; i++)
             {
                 lut[i] = (byte) samples[i];
-                System.out.println("LUT: " + (lut[i] & 0xFF));
+                // System.out.println("LUT: " + (lut[i] & 0xFF));
             }
 
         }
@@ -838,7 +838,7 @@ class CSPlot extends Canvas implements MouseMotionListener, MouseListener
             {
                 return;
             }
-            // todo not done :)
+            // not done :), or yes? -- yes, it's done
 
 
             // for saving desired type of function
