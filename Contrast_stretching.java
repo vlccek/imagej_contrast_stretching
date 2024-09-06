@@ -478,7 +478,7 @@ public class Contrast_stretching extends PlugInFrame implements ActionListener
 
         // lambda param
         final Panel panelInputl = new Panel();
-        Label lambdaLabel = new Label("Lambda:");
+        Label lambdaLabel = new Label("Lambda <0-100>:");
         lambdaLabel.setFont(sans);
         panelInputl.add(lambdaLabel);
         lambdaField = new JTextField(4);
